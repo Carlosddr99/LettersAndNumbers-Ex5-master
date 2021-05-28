@@ -1,5 +1,7 @@
 package es.ulpgc.eite.cleancode.lettersandnumbers.numbers;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 import es.ulpgc.eite.cleancode.lettersandnumbers.app.AppMediator;
@@ -36,7 +38,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     if (savedState != null) {
 
       // update the model if is necessary
-      model.onDataFromPreviousScreen(savedState.data);
+      model.onDataFromPreviousScreen(savedState.id);
     }
 
   }
@@ -65,6 +67,8 @@ public class NumberListPresenter implements NumberListContract.Presenter {
 
     // call the model and update the state
     state.data = model.getStoredData();
+    state.idLetra=model.getId();
+
 
     // update the view
     view.get().onDataUpdated(state);
@@ -74,6 +78,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    state.datasource.clear();
   }
 
   @Override
@@ -121,6 +126,12 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   @Override
   public void onClickNumberListButton() {
     // Log.e(TAG, "onClickNumberListButton()");
+
+    NumberData nuevoNumero=new NumberData();
+    state.numeroActual=model.actualizarNumero(state.numeroActual);
+    nuevoNumero.number=state.numeroActual;
+    state.datasource.add(nuevoNumero);
+    view.get().onDataUpdated(state);
   }
 
   @Override

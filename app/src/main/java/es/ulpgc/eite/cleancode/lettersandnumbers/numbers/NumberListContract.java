@@ -31,9 +31,11 @@ public interface NumberListContract {
 
   interface Model {
     String getStoredData();
+    Long getId();
+    int actualizarNumero(int numero);
     void onDataFromNextScreen(String data);
     void onRestartScreen(String data);
-    void onDataFromPreviousScreen(String data);
+    void onDataFromPreviousScreen(Long idLetra);
   }
 
 

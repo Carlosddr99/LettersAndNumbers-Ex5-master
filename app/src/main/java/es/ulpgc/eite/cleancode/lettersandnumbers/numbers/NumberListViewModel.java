@@ -10,6 +10,8 @@ public class NumberListViewModel {
   // put the view state here
   public String data;
   public List<NumberData> datasource;
+  public Long idLetra;
+  public int numeroActual;
 
   public NumberListViewModel() {
     datasource = new ArrayList<>();
