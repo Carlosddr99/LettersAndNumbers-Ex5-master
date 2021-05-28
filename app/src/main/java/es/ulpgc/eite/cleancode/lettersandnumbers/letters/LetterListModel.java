@@ -7,9 +7,11 @@ public class LetterListModel implements LetterListContract.Model {
   public static String TAG = LetterListModel.class.getSimpleName();
 
   private String data;
+  private char letra;
 
   public LetterListModel(String data) {
     this.data = data;
+    letra='A';
   }
 
   @Override
@@ -31,5 +33,11 @@ public class LetterListModel implements LetterListContract.Model {
   @Override
   public void onDataFromPreviousScreen(String data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
+  }
+  @Override
+  public void actualizarLetra(){
+
+    data=Character.toString(letra);
+    letra++;
   }
 }

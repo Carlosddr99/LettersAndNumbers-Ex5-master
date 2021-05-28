@@ -33,6 +33,7 @@ public interface LetterListContract {
 
   interface Model {
     String getStoredData();
+    void actualizarLetra();
     void onDataFromNextScreen(String data);
     void onRestartScreen(String data);
     void onDataFromPreviousScreen(String data);

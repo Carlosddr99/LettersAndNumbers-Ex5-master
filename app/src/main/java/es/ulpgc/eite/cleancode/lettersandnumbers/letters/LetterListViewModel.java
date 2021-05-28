@@ -10,6 +10,7 @@ public class LetterListViewModel {
   // put the view state here
   public String data;
   public List<LetterData> datasource;
+  public Long letraId;
 
   public LetterListViewModel() {
     datasource = new ArrayList<>();
