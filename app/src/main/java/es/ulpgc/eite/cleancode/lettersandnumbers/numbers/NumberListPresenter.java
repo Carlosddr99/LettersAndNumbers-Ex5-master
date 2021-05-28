@@ -36,7 +36,7 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     // use passed state if is necessary
     LettersToNumbersState savedState = getStateFromPreviousScreen();
     if (savedState != null) {
-
+    Log.e(TAG,""+savedState.id);
       // update the model if is necessary
       model.onDataFromPreviousScreen(savedState.id);
     }
@@ -68,6 +68,10 @@ public class NumberListPresenter implements NumberListContract.Presenter {
     // call the model and update the state
     state.data = model.getStoredData();
     state.idLetra=model.getId();
+    if(model.existeObjeto(state.idLetra)){
+      state.datasource=model.getLista(state.idLetra);
+    }
+
 
 
     // update the view
@@ -78,7 +82,10 @@ public class NumberListPresenter implements NumberListContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    model.almacernarNumeros(state.datasource);
+
     state.datasource.clear();
+
   }
 
   @Override

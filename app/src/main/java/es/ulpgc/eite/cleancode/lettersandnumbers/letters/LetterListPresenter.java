@@ -49,7 +49,7 @@ public class LetterListPresenter implements LetterListContract.Presenter {
     // Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
-    model.onRestartScreen(state.data);
+
   }
 
   @Override
@@ -61,12 +61,12 @@ public class LetterListPresenter implements LetterListContract.Presenter {
     if (savedState != null) {
 
       // update the model if is necessary
-      model.onDataFromNextScreen(savedState.data);
+
     }
 
 
     // call the model and update the state
-    state.data = model.getStoredData();
+
 
     // update the view
     view.get().onDataUpdated(state);
@@ -110,6 +110,7 @@ public class LetterListPresenter implements LetterListContract.Presenter {
   @Override
   public void onClickLetterListCell(LetterData data) {
     // Log.e(TAG, "onClickLetterListCell()");
+    Log.e(TAG,""+data.id);
     LettersToNumbersState pasarNumber=new LettersToNumbersState();
     pasarNumber.id=data.id;
 
